@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minSteps(int n) 
+    {
+        vector<int>dp(n+1,n);
+        dp[1] = 0;
+        for(int i=1;i<=n;i++)
+        {
+            for(int j = 2;j*i<=n;j++)
+            {
+                dp[i*j] = min(dp[i*j],dp[i]+j);
+            }
+        }
+        
+        return dp[n];
+    }
+};
